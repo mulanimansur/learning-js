@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <h3>example 1 - change text</h3>
+     <h1 id="title">hello its mansur</h1>
+     <button onclick="changetext()">change text</button>
+     <script>
+         function changetext(){
+               document.getElementById('title').innerHTML = 'i am from osmanabad';
+         }
+     </script>
+     <hr>
+     <h3> change style using dom</h3>
+     <p id="msg">Lorem ipsum dolor sit amet consectetur adipisicing elit.Voluptatum quod excepturi porro? Consequuntur sed itaque mollitia amet,
+         saepe officia excepturi at vero inventore dolores distinctio autem ullam odit. Soluta, nulla.
+     </p>
+     <button onclick="changecolor()">change color</button>
+     <script>
+        function changecolor(){
+            document.getElementById('msg').style.color = 'blue';
+        }
+     </script>
+     <hr>
+     <h3>Change Image Using DOM</h3>
+
+     <img id="myimg" src="images/sqr1.png" width="300">
+
+
+      <button onclick="changeimage()">Change Image</button>
+
+     <script>
+     function changeimage() {
+        document.getElementById("myimg").src = "images/man.png";
+    }
+     </script>
+        <hr>
+        <h3>get input from user and display</h3>
+        <input type="text" id="nameInput" placeholder="enter name"/>
+        <button onclick="showName()">submit</button>
+        <h2 id="output"></h2>
+        <script>
+            function showName(){
+                let name = document.getElementById('nameInput').value;
+                document.getElementById('output').innerHTML = 'hello welcome' + name;
+            }
+        </script>
+        <hr>
+        <h3>change font size using +,-,</h3>
+        <p id="para">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, maiores! Ullam maxime sequi sed? Ea repudiandae exercitationem excepturi error suscipit unde alias, tempora nihil aspernatur vitae sapiente veniam ullam nam?
+        Nemo doloribus, dolor veniam libero accusamus voluptatum? Incidunt, ex voluptatem! Ea, commodi laborum, corporis cupiditate asperiores omnis amet quam ut voluptas in perspiciatis quibusdam enim nisi! Quis, est! Consequuntur, deserunt!
+        Nostrum, nulla consequuntur dignissimos voluptates eum quo sequi nemo magni? Molestiae quo exercitationem quam consectetur nam totam earum amet consequuntur saepe voluptatum explicabo inventore dolorum officia, eius voluptas dignissimos sint?
+        Quia similique aliquid maiores quae rerum tempore repudiandae nesciunt hic. Quas corrupti blanditiis fugit itaque quasi consequatur eveniet accusantium ab pariatur eaque dicta rerum, voluptatibus harum explicabo praesentium doloribus nihil.
+        Nisi cupiditate dignissimos autem iusto. Quod sequi optio perspiciatis! Quis praesentium nisi magni natus molestiae, sit earum dolorem, nostrum, cumque provident nulla veritatis illum debitis sed illo expedita fuga mollitia?
+        </p>
+      
+     <p id="para">This is a paragraph.</p>
+
+     <button onclick="increase()">+</button>
+     <button onclick="decrease()">-</button>
+ 
+     <script>
+     let size = 16;
+
+     function increase() {
+        size++;
+        document.getElementById('para').style.fontSize = size + 'px';
+     }
+
+     function decrease() {
+        size--;
+        document.getElementById('para').style.fontSize = size + 'px';
+    }
+</script>
+
+       <hr>
+         <button onclick="toggleTheme()">toggle Theme</button>
+         <style>
+            body{
+                background-color: white;color: black;transition: 0.3s;
+            }
+            .dark-mode{
+                background-color: black;
+                color: white;
+            }
+         </style>
+         <script>
+            function toggleTheme(){
+                document.body.classList.toggle("dark-mode");
+            }
+         </script>
+
+
+    
+     
+</body>
+</html>
