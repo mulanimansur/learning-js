@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <form onsubmit="return validate()">
+
+                    <h2>Contact Us</h2>
+
+
+                    <!-- NAME -->
+                    <label for="name">Name</label>
+
+                    <input type="text"
+                           id="name"
+                           name="name"
+                           placeholder="Enter your name">
+
+                    <span class="text-danger" id="nameError"></span>
+
+
+                    <!-- EMAIL -->
+                    <label for="email">Email</label>
+
+                    <input type="text"
+                           id="email"
+                           name="email"
+                           placeholder="Enter your email">
+
+                    <span class="text-danger" id="emailError"></span>
+
+
+                    <!-- MOBILE -->
+                    <label for="mobile">Mobile Number</label>
+
+                    <input type="tel"
+                           id="mobile"
+                           name="mobile"
+                           placeholder="Enter your mobile number">
+
+                    <span class="text-danger" id="mobileError"></span>
+
+
+                    <!-- PASSWORD -->
+                    <label for="password">Password</label>
+
+                    <input type="password"
+                           id="password"
+                           name="password"
+                           placeholder="Enter your password">
+
+                    <span class="text-danger" id="passwordError"></span>
+
+
+                    <!-- CONFIRM PASSWORD -->
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input type="password"
+                           id="confirmPassword"
+                           name="confirmPassword"
+                           placeholder="Confirm your password">
+
+                    <span class="text-danger"
+                          id="confirmPasswordError"></span>
+
+
+                    <!-- MESSAGE -->
+                    <label for="message">Message</label>
+
+                    <textarea id="message"
+                              name="message"
+                              rows="5"
+                              placeholder="Write your message here..."></textarea>
+
+                    <span class="text-danger"
+                          id="messageError"></span>
+
+
+                    <!-- GENDER -->
+                    <label>Gender</label>
+
+                    <div class="gender">
+
+                        <label>
+                            <input type="radio"
+                                   id="male"
+                                   name="gender"
+                                   value="male">
+                            Male
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   id="female"
+                                   name="gender"
+                                   value="female">
+                            Female
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   id="other"
+                                   name="gender"
+                                   value="other">
+                            Other
+                        </label>
+
+                    </div>
+
+                    <span class="text-danger"
+                          id="genderError"></span>
+
+
+                    <!-- CHECKBOX -->
+                    <div class="checkbox">
+
+                        <input type="checkbox"
+                               id="agree"
+                               name="agree">
+
+                        <label for="agree">
+                            I agree to the terms and conditions.
+                        </label>
+
+                    </div>
+
+                    <span class="text-danger"
+                          id="agreeError"></span>
+
+
+                    <!-- SUBMIT -->
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Submit
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function validate() {
+
+            // =========================
+            // GET VALUES
+            // =========================
+
+            const name =
+                document.getElementById("name").value.trim();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const mobile =
+                document.getElementById("mobile").value.trim();
+
+            const password =
+                document.getElementById("password").value.trim();
+
+            const confirmPassword =
+                document.getElementById("confirmPassword")
+                .value.trim();
+
+            const message =
+                document.getElementById("message").value.trim();
+
+            const gender =
+                document.querySelector(
+                    'input[name="gender"]:checked'
+                );
+
+            const agree =
+                document.getElementById("agree").checked;
+
+
+            // =========================
+            // ERROR ELEMENTS
+            // =========================
+
+            const nameError =
+                document.getElementById("nameError");
+
+            const emailError =
+                document.getElementById("emailError");
+
+            const mobileError =
+                document.getElementById("mobileError");
+
+            const passwordError =
+                document.getElementById("passwordError");
+
+            const confirmPasswordError =
+                document.getElementById("confirmPasswordError");
+
+            const messageError =
+                document.getElementById("messageError");
+
+            const genderError =
+                document.getElementById("genderError");
+
+            const agreeError =
+                document.getElementById("agreeError");
+
+
+            // =========================
+            // CLEAR OLD ERRORS
+            // =========================
+
+            nameError.textContent = "";
+            emailError.textContent = "";
+            mobileError.textContent = "";
+            passwordError.textContent = "";
+            confirmPasswordError.textContent = "";
+            messageError.textContent = "";
+            genderError.textContent = "";
+            agreeError.textContent = "";
+
+
+            let isValid = true;
+
+
+            // =========================
+            // NAME VALIDATION
+            // =========================
+
+            const namePattern = /^[A-Za-z ]+$/;
+
+            if (name === "") {
+
+                nameError.textContent =
+                    "Please enter your name.";
+
+                isValid = false;
+
+            } else if (name.length < 3) {
+
+                nameError.textContent =
+                    "Name must be at least 3 characters.";
+
+                isValid = false;
+
+            } else if (!namePattern.test(name)) {
+
+                nameError.textContent =
+                    "Name should contain only letters.";
+
+                isValid = false;
+            }
+
+
+            // =========================
+            // EMAIL VALIDATION
+            // =========================
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (email === "") {
+
+                emailError.textContent =
+                    "Please enter your email.";
+
+                isValid = false;
+
+            } else if (!emailPattern.test(email)) {
+
+                emailError.textContent =
+                    "Please enter a valid email address.";
+
+                isValid = false;
+            }
+
+
+            // =========================
+            // MOBILE VALIDATION
+            // =========================
+
+            const mobilePattern =
+                /^[6-9][0-9]{9}$/;
+
+            if (mobile === "") {
+
+                mobileError.textContent =
+                    "Please enter your mobile number.";
+
+                isValid = false;
+
+            } else if (!mobilePattern.test(mobile)) {
+
+                mobileError.textContent =
+                    "Please enter a valid 10-digit mobile number.";
+
+                isValid = false;
+            }
+
+
+            // =========================
+            // PASSWORD VALIDATION
+            // =========================
+
+            const passwordPattern =
+                /^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{6,}$/;
+
+            if (password === "") {
+
+                passwordError.textContent =
+                    "Please enter a password.";
+
+                isValid = false;
+
+            } else if (!passwordPattern.test(password)) {
+
+                passwordError.textContent =
+                    "Password must be at least 6 characters, " +
+                    "include a number and a special character.";
+
+                isValid = false;
+            }
+
+
+            // =========================
+            // CONFIRM PASSWORD
+            // =========================
+
+            if (confirmPassword === "") {
+
+                confirmPasswordError.textContent =
+                    "Please confirm your password.";
+
+                isValid = false;
+
+            } else if (confirmPassword !== password) {
+
+                confirmPasswordError.textContent =
+                    "Passwords do not match.";
+
+                isValid = false;
+            }
+
+
+            // =========================
+            // MESSAGE
+            // =========================
+
+            if (message === "") {
+
+                messageError.textContent =
+                    "Please enter your message.";
+
+                isValid = false;
+            }
+
+
+            // =========================
+            // GENDER
+            // =========================
+
+            if (!gender) {
+
+                genderError.textContent =
+                    "Please select your gender.";
+
+                isValid = false;
+            }
+
+
+            // =========================
+            // CHECKBOX
+            // =========================
+
+            if (!agree) {
+
+                agreeError.textContent =
+                    "You must agree to the terms and conditions.";
+
+                isValid = false;
+            }
+
+
+            // =========================
+            // FINAL RESULT
+            // =========================
+
+            if (isValid) {
+
+                alert("Form submitted successfully!");
+
+            }
+
+            return isValid;
+        }
+
+    </script>
+
+</body>
+
+</html>
